@@ -1,0 +1,268 @@
+Id,Title,Body,Tags,CreationDate,Y
+34552656,Java: Repeat Task Every Random Seconds,"<p>I'm already familiar with repeating tasks every n seconds by using Java.util.Timer and Java.util.TimerTask. But lets say I want to print ""Hello World"" to the console every random seconds from 1-5. Unfortunately I'm in a bit of a rush and don't have any code to show so far. Any help would be apriciated.  </p>
+",<java><repeat>,2016-01-01 0:21:59,LQ_CLOSE
+34553034,Why are Java Optionals immutable?,"<p>I'd like to understand why Java 8 Optionals were designed to be immutable.  Is it just for thread-safety?</p>
+",<java><optional>,2016-01-01 2:03:20,HQ
+34553174,Text Overlay Image with Darkened Opacity React Native,"<p>I am attempting to overlay a title over an image - with the image darkened with a lower opacity. However, the opacity effect is changing the overlaying text as well - making it dim. Any fix to this? Here is what is looks like:</p>
+
+<p><a href=""https://i.stack.imgur.com/1HzD7.png"" rel=""noreferrer""><img src=""https://i.stack.imgur.com/1HzD7.png"" alt=""enter image description here""></a></p>
+
+<p>And here is my code for the custom component (article preview - which the above image is a row of article preview components): </p>
+
+<pre><code>//component for article preview touchable image
+/* will require the following
+- rss feed and api
+- user's keyword interests from parse In home.js
+- parse db needs to be augmented to include what they heart
+- parse db needs to be augmented to include what they press on (like google news)
+*/
+var React = require('react-native');
+var {
+  View, 
+  StyleSheet, 
+  Text, 
+  Image, 
+  TouchableHighlight, 
+} = React;
+
+//dimensions
+var Dimensions = require('Dimensions');
+var window = Dimensions.get('window');
+var ImageButton = require('../../common/imageButton');
+var KeywordBox = require('../../authentication/onboarding/keyword-box');
+
+//additional libraries
+
+module.exports = React.createClass({
+  //onPress function that triggers when button pressed
+  //this.props.text is property that can be dynamically filled within button 
+  /* following props:
+    - source={this.props.source}
+    - onPress={this.props.onPress}
+    - {this.props.text}
+    - {this.props.heartText}
+    - key={this.props.key} 
+    - text={this.props.category} 
+    - this.props.selected
+  */
+  render: function() {
+    return (
+      &lt;TouchableHighlight 
+        underlayColor={'transparent'}
+        onPress={this.props.onPress} &gt;
+          &lt;Image 
+            source={this.props.source} 
+            style={[styles.articlePreview, this.border('red')]}&gt;
+                  &lt;View style={[styles.container, this.border('organge')]}&gt;
+                      &lt;View style={[styles.header, this.border('blue')]}&gt;
+                          &lt;Text style={[styles.previewText]}&gt;{this.props.text}&lt;/Text&gt;
+                      &lt;/View&gt;
+                      &lt;View style={[styles.footer, this.border('white')]}&gt;
+                        &lt;View style={[styles.heartRow, this.border('black')]}&gt;
+                          &lt;ImageButton
+                              style={[styles.heartBtn, , this.border('red')]}
+                              resizeMode={'contain'}
+                              onPress={this.onHeartPress}
+                              source={require('../../img/heart_btn.png')} /&gt;
+                          &lt;Text style={[styles.heartText]}&gt;{this.props.heartText + ' favorites'}&lt;/Text&gt;
+                        &lt;/View&gt;
+                          &lt;KeywordBox 
+                              style={[styles.category, this.border('blue')]}
+                              key={this.props.key} 
+                              text={this.props.category} 
+                              onPress={this.props.categoryPress}
+                              selected={this.props.selected} /&gt;
+                      &lt;/View&gt;
+                  &lt;/View&gt;
+          &lt;/Image&gt;
+      &lt;/TouchableHighlight&gt;
+    );
+  }, 
+  onHeartPress: function() {
+    //will move this function to a general module
+  }, 
+  border: function(color) {
+      return {
+        //borderColor: color, 
+        //borderWidth: 4,
+      } 
+   },
+});
+
+var styles = StyleSheet.create({
+  heartText: {
+    color: 'white', 
+    fontSize: 12, 
+    fontWeight: 'bold',
+    alignSelf: 'center', 
+    marginLeft: 5, 
+    fontFamily: 'SFCompactText-Medium'
+  }, 
+  heartRow: {
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    alignSelf: 'center', 
+    justifyContent: 'center', 
+  }, 
+  heartBtn: {
+    height: (92/97)*(window.width/13), 
+    width: window.width/13, 
+    alignSelf:'center', 
+  }, 
+  category: {
+    fontFamily: 'Bebas Neue', 
+    fontSize: 10,
+    fontWeight: 'bold'
+  }, 
+  header: {
+    flex: 3, 
+    alignItems: 'center', 
+    justifyContent: 'space-around', 
+    marginTop: window.height/30,
+  }, 
+  footer: {
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center', 
+    margin: window.height/50,
+  }, 
+  container: {
+    flex: 1, 
+    backgroundColor: 'black', 
+    opacity: 0.6, 
+  }, 
+  articlePreview: {
+    flex: 1, 
+    height: window.height/3.2, 
+    width: window.width, 
+    flexDirection: 'column'
+  }, 
+  previewText: {
+    fontFamily: 'Bebas Neue', 
+    fontSize: 23,
+    color: 'white', 
+    alignSelf: 'center', 
+    textAlign: 'center', 
+    margin: 5, 
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  }, 
+
+});
+</code></pre>
+",<javascript><image><overlay><react-native><opacity>,2016-01-01 2:48:24,HQ
+34553318,Why ternary operator in swift is so picky?,"<p>The question is very simple, but I just could not find the answer!</p>
+
+<p>Why doesn't</p>
+
+<pre><code>return x == 0? """" : ""Hello""
+</code></pre>
+
+<p>compile but</p>
+
+<pre><code>return x == 0 ? """" : ""Hello""
+</code></pre>
+
+<p>does?</p>
+
+<p>This is really weird because all the other operators don't need an extra white space. e.g.</p>
+
+<pre><code>let x = 1+1
+let y = 1 + 1
+</code></pre>
+
+<p>are the same.</p>
+
+<p>I think it has something to do with optionals. But when you use a <code>?</code> operator on a variable, it must be used like this:</p>
+
+<pre><code>let s: String? = nil
+let x = s?.startIndex
+</code></pre>
+
+<p>I mean it must follow another operator, right?</p>
+",<swift><operators><whitespace><ternary-operator><optional>,2016-01-01 3:30:17,HQ
+34553755,hide/show fab with scale animation,"<p>I'm using custom floatingactionmenu. I need to implement scale animation on show/hide menu button like here
+<a href=""https://material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0B6Okdz75tqQsZU1kZWhRYWZpUDg/components-buttons-fab-behavior_01_xhdpi_012.mp4"" rel=""noreferrer"">floating action button behaviour</a></p>
+
+<p>Is there any way to do this ?</p>
+",<android><material-design><floating-action-button>,2016-01-01 5:21:48,HQ
+34554026,Accessing pointer member of the structure using structure pointer,"<p>I have defined integer pointer inside the structure.And i want to use that member pointer using the structure pointer.My code is as shown below:</p>
+
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+struct abc
+{
+        int *x;
+};
+
+int main()
+{
+
+        struct abc *p = (struct abc*)malloc(sizeof(struct abc));
+        p-&gt;x = (int*)malloc(sizeof(int));
+        p-&gt;x = 10;
+        printf(""The value is %d\n"",p-&gt;x);
+        free(p);
+}
+</code></pre>
+
+<p>Now i am getting output as per my expectation.But i have got warning message while compiling.The warning messages are:</p>
+
+<pre><code>temp.c:14:7: warning: assignment makes pointer from integer without a cast [enabled by default]
+temp.c:15:2: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘int *’ [-Wformat]
+</code></pre>
+
+<p>I have also tried,</p>
+
+<pre><code>*p-&gt;x = 10
+ printf(""The value is %d\n"",*p-&gt;x);
+</code></pre>
+
+<p>but it is not working.</p>
+
+<p>How to solve this warning?</p>
+",<c><pointers><data-structures>,2016-01-01 6:21:17,LQ_CLOSE
+34554206,"How To Disable 2nd Saturday 4th Saturday ,Sunday And Holiday Date Using JQuery Calendar","  i want to Disable 2nd Saturday 4th saturday, Sunday And Public Holiday Date Using jQuery calendar 
+
+All year of 2nd Saturday And 4th Saturday ,Sunday Disable from Calendar
+
+Please Help Me",<javascript><jquery><jquery-ui>,2016-01-01 6:55:18,LQ_EDIT
+34554671,Resizing containers in bootstrap,"I am new to bootstrap and i would like to find out how do i automatically resize my image to fit it into the container. And i would like to have a blank background for my container. Currently it is like this 
+
+   <div class=""row"">
+                        <div class=""col-md-3"">
+                            <div class=""panel panel-primary"">
+                                <div class=""panel-heading"">
+                                    <div class=""row"">
+                                        <img src =""haha.png""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                [![enter image description here][1]][1]
+
+I plugged the whole code from some template form and i was playing around with it. 
+
+I would like to have a container where i could fit the image inside automatically resizing the image.
+
+
+  [1]: http://i.stack.imgur.com/s16WB.png",<jquery><html><css><twitter-bootstrap>,2016-01-01 8:32:05,LQ_EDIT
+34554871,Changing Theme in Windows 10 UWP App Programmatically,"<p>I was able to change theme using <code>this.RequestedTheme = ElementTheme.Dark;</code>
+But what I need is the whole application level, since this one only change the theme of the current page to dark.</p>
+
+<p>Whenever I try this <code>App.Current.RequestedTheme = ApplicationTheme.Dark;</code>
+I always get this error</p>
+
+<blockquote>
+  <p>An exception of type 'System.NotSupportedException' occurred in UWPApp.exe but was not handled in user code</p>
+</blockquote>
+
+<p>Is there such a way that I can change the whole application theme from Light to Dark or vice versa?</p>
+
+<p>I'm using VS2015</p>
+",<c#><windows-10><windows-10-mobile><windows-10-universal>,2016-01-01 9:05:45,HQ
